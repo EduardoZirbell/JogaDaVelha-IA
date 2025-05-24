@@ -4,6 +4,7 @@
 import pygame
 from board import Board
 from player import Player
+from ia import IA
 from config import *
 
 class Game:
@@ -15,6 +16,7 @@ class Game:
         self.estado = 'menu'  # 'menu' ou 'jogo'
         self.board = Board(self.tela)
         self.jogador = Player()
+        self.ia = IA()
         self.executando = True
 
     def desenhar_botao(self, ret, texto):
@@ -49,6 +51,10 @@ class Game:
                 if not self.board.fim_de_jogo:
                     rotulo = self.fonte.render(f"Vez de: {self.jogador.simbolo()}", True, COR_TEXTO)
                     self.tela.blit(rotulo, (10, 10))
+                    if self.jogador.jogador == 1:
+                        acao = self.ia.bestAction(self.board)
+                        if acao:
+                            self.board.jogar(acao[0], acao[1], self.jogador)
                 else:
                     self.exibir_texto_central(self.board.texto_vencedor, COR_VENCEDOR)
                     botao_menu = pygame.Rect(100, ALTURA - 50, 100, 35)

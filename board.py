@@ -66,3 +66,15 @@ class Board:
                 self.texto_vencedor = "Empate!"
             else:
                 jogador.alternar()
+
+    def acoes_possiveis(self):
+        # Retorna lista de (linha, coluna) para casas vazias
+        return [(linha, coluna)
+                for linha in range(LINHAS)
+                for coluna in range(COLUNAS)
+                if self.tabuleiro[linha][coluna] == 0]
+    
+    def desfazer_jogada(self, acao):
+        linha, coluna = acao
+        self.tabuleiro[linha][coluna] = 0
+    
