@@ -8,6 +8,9 @@ from ia import IA
 from config import *
 
 class Game:
+    # Inicializa o jogo, configurando a janela, o tabuleiro, os jogadores (humano e IA),
+    #Define a configuração de fonte dos textos e o estado inicial (menu). Também define o loop principal como ativo.
+
     def __init__(self):
         pygame.init()
         self.tela = pygame.display.set_mode((LARGURA, ALTURA))
@@ -60,7 +63,8 @@ class Game:
                     botao_menu = pygame.Rect(100, ALTURA - 50, 100, 35)
                     self.desenhar_botao(botao_menu, 'Menu')
 
-            # Eventos
+            # Trata os eventos do jogo, como fechar a janela, cliques do mouse e teclas pressionadas.
+            # No menu, permite iniciar ou sair do jogo. Durante a partida, registra jogadas e permite reiniciar com a tecla "R".
             for evento in pygame.event.get():
                 if evento.type == pygame.QUIT:
                     self.executando = False
