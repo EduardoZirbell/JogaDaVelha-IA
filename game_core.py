@@ -9,9 +9,10 @@ from config import *
 
 class Game:
     # Inicializa o jogo, configurando a janela, o tabuleiro, os jogadores (humano e IA),
-    #Define a configuração de fonte dos textos e o estado inicial (menu). Também define o loop principal como ativo.
+    # Define a configuração de fonte dos textos e o estado inicial (menu). Também define o loop principal como ativo.
 
     def __init__(self):
+        # Inicializa o objeto Game_Core
         pygame.init()
         self.tela = pygame.display.set_mode((LARGURA, ALTURA))
         pygame.display.set_caption('Jogo da Velha')

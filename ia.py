@@ -4,13 +4,15 @@
 
 class IA:
     def __init__(self):
-        self.jogador = 1  # IA é o jogador 1 (círculo)
+        "Inicializa a IA como jogador 1 (círculo)."
+        self.jogador = 1
 
     def simbolo(self):
-        # Retorna o símbolo correspondente ao jogador atual
+        "Retorna o símbolo correspondente ao jogador da IA."
         return "O" if self.jogador == 1 else "X"
 
     def bestAction(self, board):
+        "Calcula a melhor ação possível para a IA no estado atual do tabuleiro, utilizando o algoritmo Minimax."
         melhor_valor = float('-inf')
         melhor_acao = None
         for acao in board.acoes_possiveis():
@@ -23,6 +25,7 @@ class IA:
         return melhor_acao
 
     def minimax(self, board, maximizando):
+        "Roda o algoritmo Minimax recursivo para avaliar o melhor valor possível para a IA, simulando todas as jogadas futuras."
         vencedor = board.verificar_vencedor()
         if vencedor == self.jogador:
             return 1
